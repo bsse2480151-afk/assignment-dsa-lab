@@ -1,0 +1,60 @@
+class DoublyLinkedList {
+
+    class Node {
+        int data;
+        Node prev, next;
+        Node(int data) { this.data = data; }
+    }
+
+    Node head, tail;
+
+    void insertAtBeginning(int data) {
+        Node n = new Node(data);
+        if (head == null) head = tail = n;
+        else {
+            n.next = head;
+            head.prev = n;
+            head = n;
+        }
+    }
+
+    void insertAtEnd(int data) {
+        Node n = new Node(data);
+        if (tail == null) head = tail = n;
+        else {
+            tail.next = n;
+            n.prev = tail;
+            tail = n;
+        }
+    }
+
+    void displayForward() {
+        Node t = head;
+        while (t != null) {
+            System.out.print(t.data + " ");
+            t = t.next;
+        }
+        Sys…
+public class DLLMain {
+    public static void main(String[] args) {
+
+        DoublyLinkedList dll = new DoublyLinkedList();
+
+        dll.insertAtBeginning(10);
+        dll.insertAtBeginning(20);
+        dll.insertAtEnd(30);
+        dll.insertAtEnd(40);
+        dll.insertAtEnd(5);
+        dll.insertAtEnd(50);
+
+        dll.displayForward();
+        dll.displayBackward();
+
+        dll.deleteFirst();
+        dll.deleteLast();
+        dll.deleteByValue(20);
+
+        dll.displayForward();
+        dll.findMinMax();
+    }
+}
