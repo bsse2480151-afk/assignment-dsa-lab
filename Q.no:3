@@ -1,0 +1,36 @@
+class LinkedListQueue {
+
+    class Node {
+        int data;
+        Node next;
+        Node(int data) { this.data = data; }
+    }
+
+    Node front, rear;
+
+    void enqueue(int data) {
+        Node n = new Node(data);
+        if (rear == null) front = rear = n;
+        else {
+            rear.next = n;
+            rear = n;
+        }
+    }
+
+    int dequeue() {
+        if (front == null) return -1;
+        int val = front.data;
+        front = front.next;
+        if (front == null) rear = null;
+        return val;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {3, 8, 12, 20, 25, 30};
+
+        System.out.println(Searching.binarySearchIter(arr, 20));
+        System.out.println(Searching.linearSearchRec(arr, 0, 12));
+    }
+}
